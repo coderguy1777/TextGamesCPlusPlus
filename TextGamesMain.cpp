@@ -1,231 +1,301 @@
+#include "pch.h"
 #include <iostream>
 #include <string>
 #include <vector>
+#include <Windows.h>
+#include <conio.h>
 using namespace std;
 
 int healthmethodforGameD(int x) {
-    int y = 10;
-    return x - y;
+	int y = 10;
+	return x - y;
+}
+
+namespace roomitems {
+	vector<string>roomitem;
+	void func() {
+		string item1 = "canteen";
+		string item2 = "nano-ions";
+		string item3 = "haloinien";
+		string item4 = "thermal grenade";
+		string item5 = "remote detonater";
+		roomitem.push_back(item1);
+		roomitem.push_back(item2);
+		roomitem.push_back(item3);
+		roomitem.push_back(item4);
+		roomitem.push_back(item5);
+
+		for (unsigned int loopvar = 0; loopvar < roomitem.size(); loopvar++) {
+			cout << "Item " << loopvar + 1 << ": " << roomitem[loopvar] << endl;
+		}
+
+	}
+}
+
+using namespace roomitems;
+void suboptiongamed1() {
+	vector<string>playerinv;
+	cout << "You need to the blow the vehicle as quickly as possible, there are items all around, would you like to scan for these items, if yes, type yes, if no, type no." << endl;
+	cout << "You have to blow up the vehicle, you have 30 seconds to do so." << '\n' << endl;
+	cout << "To blow up the vehicle, you'll need explosive items." << '\n' << endl;
+	cout << "Hold the key, (x), for 3 seconds to scan for nearby items" << endl;
+
+	char in = _getch();
+
+	if (in == 'x') {
+		int scantime = 3;
+		for (int timeleft = scantime; timeleft > 0; timeleft--) {
+			Sleep(1000);
+			cout << "Scanning vehicle...." << '\n' << endl;
+			if (timeleft < 0) {
+				cout << "Scanning has stopped, stop pressing x" << endl;
+				continue;
+			}
+
+		}
+	}
+
+	cout << "The room is now scanned, here are the results: " << '\n' << endl;
+	func();
+	cout << "---------------------------------------------" << endl;
+	cout << "Now with the items known, you can pick 3 items, please input the item number in the vehicle that you would like in your inventory, but add the items as array indicies." << endl;
+	cout << "---------------------------------------------" << endl;
+	cout << "Type 0 for item 1, 1 for item 2, and so on when selecting items in this case." << endl;
+
+	int item1, item2, item3;
+	cout << "Type the first item index you would like." << endl;
+	cin >> item1;
+	playerinv.push_back(roomitem[item1]);
+	cout << playerinv[0] << endl;
+}
+
+void suboptiongamed2() {
+	cout << "You have decided to fight the enemy with a makeshift weapon while you repair the vehicle" << endl;
 }
 
 void OptionSub1GameD() {
-    cout << "You have decided to knock out the man that attacked you with a lightsaber, you flee the area, and find three vehicles, a hovercar, a jet, and a spaceship with half a tank of fuel, type 1, 2, or 3 for the vehicle you want" << endl;
+	cout << "You have decided to knock out the man that attacked you with a lightsaber, you flee the area, and find three vehicles, a hovercar, a jet, and a spaceship with half a tank of fuel, type 1, 2, or 3 for the vehicle you want" << endl;
 
-    enum vehiclevals { hovercar = 1, jet, spaceship };
+	enum vehiclevals { hovercar = 1, jet, spaceship };
 
-    vector<string> playervals;
-    int vehicleselection;
-    cin >> vehicleselection;
+	vector<string> playervals;
+	int vehicleselection;
+	cin >> vehicleselection;
 
-    vehiclevals v;
+	vehiclevals v;
 
-    switch (vehicleselection)
-    {
-        case hovercar: {
-            string hoverrcar = "Hovercar";
-            playervals.push_back(hoverrcar);
-            break;
-        }
+	switch (vehicleselection)
+	{
+	case hovercar: {
+		string hoverrcar = "Hovercar";
+		playervals.push_back(hoverrcar);
+		break;
+	}
 
-        case jet: {
-            string jett = "Jet";
-            playervals.push_back(jett);
-            break;
-        }
+	case jet: {
+		string jett = "Jet";
+		playervals.push_back(jett);
+		break;
+	}
 
-        case spaceship: {
-            string spacceship = "Spaceship";
-            playervals.push_back(spacceship);
-            break;
-        }
-        default: {
-            cout << "Invalid choice try again for a vehicle selection, you typed an invalid input." << endl;
-        }
-    }
+	case spaceship: {
+		string spacceship = "Spaceship";
+		playervals.push_back(spacceship);
+		break;
+	}
+	default: {
+		cout << "Invalid choice try again for a vehicle selection, you typed an invalid input." << endl;
+	}
+	}
 
-    cout << "You enter your vehicle of choice, which is the: " << playervals[0] << endl;
-    cout << "---------------------------------------------------------------------" << endl;
-    cout << "There is a problem however, troops are closing in, and your engine wont start, and system navigation is down." << '\n' << endl;
-    cout << "You have three options available to you here in this case." << endl;
-    cout << "---------------------------------------------------------------------" << endl;
-    cout << "Your first option is to blow up your vehicle of choice, and flee the scene" << endl;
-    cout << "Your second option is to make a weapon from the ship you make, and fight off the approaching threat while you fix the vehicle you are using." << endl;
-    cout << "Your third and final option is to fight the threat off with every weapon you can make." << endl;
-    cout << "---------------------------------------------------------------------" << endl;
-    cout << "To choose an option, as it has been before, type 1 for option 1, 2 for option 2, and 3 for option 3." << endl;
+	cout << "You enter your vehicle of choice, which is the: " << playervals[0] << endl;
+	cout << "---------------------------------------------------------------------" << endl;
+	cout << "There is a problem however, troops are closing in, and your engine wont start, and system navigation is down." << '\n' << endl;
+	cout << "You have three options available to you here in this case." << endl;
+	cout << "---------------------------------------------------------------------" << endl;
+	cout << "Your first option is to blow up your vehicle of choice, and flee the scene" << endl;
+	cout << "Your second option is to make a weapon from the ship you make, and fight off the approaching threat while you fix the vehicle you are using." << endl;
+	cout << "Your third and final option is to fight the threat off with every weapon you can make." << endl;
+	cout << "---------------------------------------------------------------------" << endl;
+	cout << "To choose an option, as it has been before, type 1 for option 1, 2 for option 2, and 3 for option 3." << endl;
 
-    enum enemyfightchoices {option111 = 1, option222, option333};
+	enum enemyfightchoices { option111 = 1, option222, option333 };
 
-    int userinput2;
-    cin >> userinput2;
+	int userinput2;
+	cin >> userinput2;
 
 
-    switch(userinput2)
-    {
-        case option111: {
-            cout << "You have chosen to blow up the vehicle and flee the scene with the encroaching enemy in sight." << endl;
-            break;
-        }
+	switch (userinput2) {
 
-        case option222: {
-            cout << "You have chosen to make a weapon from the items in your vehicle, and to hold off the encroaching enemy during the repair process." << endl;
-            break;
-        }
+	case option111: {
+		cout << "You have chosen to blow up the vehicle and flee the scene with the encroaching enemy in sight." << endl;
+		suboptiongamed1();
+		break;
+	}
 
-        case option333: {
-            cout << "You have chosen to fight the encroaching enemy until you are the last man standing, get ready to fight with every possible weapon in your vehile available to you." << endl;
-            break;
-        }
+	case option222: {
+		cout << "You have chosen to make a weapon from the items in your vehicle, and to hold off the encroaching enemy during the repair process." << endl;
+		break;
+	}
 
-        default: {
-            cout << "You have typed an invalid option for choice selection for this part of the game, please try again." << endl;
-        }
-    }
+	case option333: {
+		cout << "You have chosen to fight the encroaching enemy until you are the last man standing, get ready to fight with every possible weapon in your vehile available to you." << endl;
+		break;
+	}
+
+	default: {
+		cout << "You have typed an invalid option for choice selection for this part of the game, please try again." << endl;
+	}
+	}
 }
 
+
 void OptionSub2GameD() {
-    string input2;
+	string input2;
 }
 
 void OptionSub3GameD() {
-    string input3;
+	string input3;
 }
 void GameA() {
-    cout << "Hello user, Welcome to the game! Please enter your name!\n" << endl;
-    int player1health = 200;
-    string input;
-    cin >> input;
-    cout << "   " << endl;
-    cout << "Your name is: " << input << endl;
+	cout << "Hello user, Welcome to the game! Please enter your name!\n" << endl;
+	int player1health = 200;
+	string input;
+	cin >> input;
+	cout << "   " << endl;
+	cout << "Your name is: " << input << endl;
 }
 
 void GameB() {
-    cout << "Hello Player, Welcometh to the game! Please type thy name!\n" << endl;
-    int playershealth = 200;
-    string input2;
-    cin >> input2;
-    cout << "  " << endl;
-    cout << "Your namest is: " << input2 << endl;
+	cout << "Hello Player, Welcometh to the game! Please type thy name!\n" << endl;
+	int playershealth = 200;
+	string input2;
+	cin >> input2;
+	cout << "  " << endl;
+	cout << "Your namest is: " << input2 << endl;
 }
 
 void GameC() {
-    cout << "Welcome Citizen, please enter your identifying name! \n" << endl;
-    int playerhealth = 200;
-    string input3;
-    cin >> input3;
-    cout << "   " << endl;
-    cout << "Your identifying name is: " << input3 << endl;
+	cout << "Welcome Citizen, please enter your identifying name! \n" << endl;
+	int playerhealth = 200;
+	string input3;
+	cin >> input3;
+	cout << "   " << endl;
+	cout << "Your identifying name is: " << input3 << endl;
 }
 
 void GameD() {
-    cout << "Hello Visitor, what is your name?" << endl;
-    int userhealth = 200;
-    string input4;
+	cout << "Hello Visitor, what is your name?" << endl;
+	int userhealth = 200;
+	string input4;
 
-    cin >> input4;
-    cout << "   " << endl;
-    cout << "Visitor, your name is: " << input4 << endl;
-    cout << input4 << ", we need your help, we have recently lost an oil drill in our off coastal sea colony, can you fix it? \n" << endl;
+	cin >> input4;
+	cout << "   " << endl;
+	cout << "Visitor, your name is: " << input4 << endl;
+	cout << input4 << ", we need your help, we have recently lost an oil drill in our off coastal sea colony, can you fix it? \n" << endl;
 
-    std::vector<std::string> iteminventory;
-    string option1 = "Option1";
-    string option2 = "Option2";
-    string option3 = "Option3";
-    string option4 = "Option4";
+	std::vector<std::string> iteminventory;
+	string option1 = "Option1";
+	string option2 = "Option2";
+	string option3 = "Option3";
+	string option4 = "Option4";
 
-    cout << "I can fix it, just give me the tools (Type Option1 to confirm this.) \n" << endl;
-    cout << "Well when did this happen, and why can't you fix it? (Type Option2 to confirm this.) \n" << endl;
-    cout << "I shall pass, I am not skilled enough to fix this. (Type Option3 to confirm this.) \n" << endl;
-    cout << "(Shoot the person asking you for help) (Type Option4 to confirm this.) \n" << endl;
-    string decision;
-    cin >> decision;
+	cout << "I can fix it, just give me the tools (Type Option1 to confirm this.) \n" << endl;
+	cout << "Well when did this happen, and why can't you fix it? (Type Option2 to confirm this.) \n" << endl;
+	cout << "I shall pass, I am not skilled enough to fix this. (Type Option3 to confirm this.) \n" << endl;
+	cout << "(Shoot the person asking you for help) (Type Option4 to confirm this.) \n" << endl;
 
-    if (decision == option1) {
-        cout << "Wonderful! We thank you for your assistance " << input4 << " and will now give you the resources to complete the task at hand. \n " << endl;
-    }
+	string decision;
+	cin >> decision;
 
-    if (decision == option2) {
-        cout << "We do not know, we were hoping you could find this out for us, if given the right tools of course " << input4 << '\n' << endl;
-    }
+	if (decision == option1) {
+		cout << "Wonderful! We thank you for your assistance " << input4 << " and will now give you the resources to complete the task at hand. \n " << endl;
+	}
 
-    if (decision == option3) {
-        cout << "Alright, do you need help with this, we can give you men to do this task " << input4 << '\n' << endl;
-    }
+	if (decision == option2) {
+		cout << "We do not know, we were hoping you could find this out for us, if given the right tools of course " << input4 << '\n' << endl;
+	}
 
-    if (decision == option4) {
-        cout << "Very well, then I shall now hit you " << input4 << " with my weapon, a lightsaber!" << endl;
-        cout << "The Person Speaking to you about the broken oil rig gives you a minor wound, you lose 10 health" << '\n' << endl;
-        int healthloss = healthmethodforGameD(userhealth);
-        cout << "Player health as of now: " << healthloss << endl;
-        cout << "-------------------------" << endl;
-        cout << "The Person who attacked you begins to speak again: " << endl;
-        cout << "Now in the name of all that is good, I shall kill you " << input4 << '\n' << endl;
+	if (decision == option3) {
+		cout << "Alright, do you need help with this, we can give you men to do this task " << input4 << '\n' << endl;
+	}
 
-        string option11 = "Option11";
-        string option22 = "Option22";
-        string option33 = "Option33";
+	if (decision == option4) {
+		cout << "Very well, then I shall now hit you " << input4 << " with my weapon, a lightsaber!" << endl;
+		cout << "The Person Speaking to you about the broken oil rig gives you a minor wound, you lose 10 health" << '\n' << endl;
+		int healthloss = healthmethodforGameD(userhealth);
 
-        cout << "Type Option11 for the first option, which is to flee the area you are in from the attacker." << '\n' << endl;
-        cout << "Type Option22 for the second option, which is to knockout the attacker, and see if a vehicle is at the location you are at, and flee that way." << '\n' << endl;
-        cout << "Type Option33 for a suprise option/outcome in this case for that option in particular." << '\n' << endl;
+		cout << "Player health as of now: " << healthloss << endl;
+		cout << "-------------------------" << endl;
+		cout << "The Person who attacked you begins to speak again: " << endl;
+		cout << "Now in the name of all that is good, I shall kill you " << input4 << '\n' << endl;
 
-        string selection;
-        cin >> selection;
+		string option11 = "Option11";
+		string option22 = "Option22";
+		string option33 = "Option33";
 
-        if (selection == option11) {
-            OptionSub1GameD();
-        }
+		cout << "Type Option11 for the first option, which is to flee the area you are in from the attacker." << '\n' << endl;
+		cout << "Type Option22 for the second option, which is to knockout the attacker, and see if a vehicle is at the location you are at, and flee that way." << '\n' << endl;
+		cout << "Type Option33 for a surprize option/outcome in this case for that option in particular." << '\n' << endl;
 
-        if (selection == option22) {
-            OptionSub2GameD();
-        }
+		string selection;
+		cin >> selection;
 
-        if (selection == option33) {
-            OptionSub3GameD();
-        }
-    }
+		if (selection == option11) {
+			OptionSub1GameD();
+		}
+
+		if (selection == option22) {
+			OptionSub2GameD();
+		}
+
+		if (selection == option33) {
+			OptionSub3GameD();
+		}
+	}
 
 }
 
 int main()
 {
-    int a;
-    int b;
-    int c;
-    int d;
 
-    cout << "Hello user! 4 numbers will appear, please type 1-4 to start a text game or something, whatever I code is what you do.\n" << endl;
-    cout << "For all of the games that are availible, you will start out with 200 health on each game, and have the ability to gain shield as the game goes on. \n" << endl;
+	int a;
+	int b;
+	int c;
+	int d;
 
-    a = 1;
-    b = 2;
-    c = 3;
-    d = 4;
+	cout << "Hello user! 4 numbers will appear, please type 1-4 to start a text game or something, whatever I code is what you do.\n" << endl;
+	cout << "For all of the games that are available, you will start out with 200 health on each game, and have the ability to gain shield as the game goes on. \n" << endl;
 
-    cout << "For Game A, type 1 \n" << endl;
-    cout << "For Game B, type 2 \n" << endl;
-    cout << "For Game C, type 3 \n" << endl;
-    cout << "For Game D, type 4 \n" << endl;
+	a = 1;
+	b = 2;
+	c = 3;
+	d = 4;
 
-    int input;
-    cin >> input;
+	cout << "For Game A, type 1 \n" << endl;
+	cout << "For Game B, type 2 \n" << endl;
+	cout << "For Game C, type 3 \n" << endl;
+	cout << "For Game D, type 4 \n" << endl;
 
-    if (input == a) {
-        GameA();
-    }
+	int input;
+	cin >> input;
 
-    if (input == b) {
-        GameB();
-    }
+	if (input == a) {
+		GameA();
+	}
 
-    if (input == c) {
-        GameC();
-    }
+	if (input == b) {
+		GameB();
+	}
 
-    if (input == d) {
-        GameD();
-    }
+	if (input == c) {
+		GameC();
+	}
 
-    system("pause");
-    return EXIT_SUCCESS;
+	if (input == d) {
+		GameD();
+	}
+
+	system("pause");
+	return EXIT_SUCCESS;
 }
