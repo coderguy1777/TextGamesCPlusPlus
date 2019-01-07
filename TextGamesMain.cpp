@@ -32,6 +32,96 @@ namespace roomitems {
 	}
 }
 
+namespace craftinglist {
+	vector<string>craftrecipies;
+	vector<string>food;
+	vector<string>weapons;
+	vector<string>ammo;
+	void listfunction() {
+		string recipe1 = "Explosives";
+		string recipe2 = "Weapons";
+		string recipe3 = "Buildings";
+		string recipe4 = "Furniture";
+		string recipe5 = "Food";
+
+		craftrecipies.push_back(recipe1);
+		craftrecipies.push_back(recipe2);
+		craftrecipies.push_back(recipe3);
+		craftrecipies.push_back(recipe4);
+		craftrecipies.push_back(recipe5);
+	}
+	void listfunction2() {
+		string food1 = "Apples";
+		string food2 = "Hamburgers";
+		string food3 = "Hot Dogs";
+		string food4 = "M&M's";
+		string food5 = "Carrots";
+
+		food.push_back(food1);
+		food.push_back(food2);
+		food.push_back(food3);
+		food.push_back(food4);
+		food.push_back(food5);
+	}
+
+	void listfunction3() {
+		string weapon1 = "Sword";
+		string weapon2 = "Hunting Rifle";
+		string weapon3 = "Knife";
+		string weapon4 = "Dagger";
+		string weapon5 = "Gattling gun";
+		string weapon6 = "Broadsword";
+		string weapon7 = "Pot";
+		string weapon8 = "Sniper Rifle";
+		string weapon9 = "MiniGun";
+		string weapon10 = "Katana Blade"; 
+		string weapon11 = "Laser Gun";
+		string weapon12 = "Gattling Laser Cannon";
+		string weapon13 = "Fusion Cannon";
+		string weapon14 = "Helios Gun";
+		string weapon15 = "Sun Gun";
+		string weapon16 = "Demerit Gattling gun";
+		string weapon17 = "The Infinity Blade";
+		string weapon18 = "Battle Mace";
+		string weapon19 = "Warthog";
+		string weapon20 = "Stevianian Sword";
+
+		weapons.push_back(weapon1);
+		weapons.push_back(weapon2);
+		weapons.push_back(weapon3);
+		weapons.push_back(weapon4);
+		weapons.push_back(weapon5);
+		weapons.push_back(weapon6);
+		weapons.push_back(weapon7);
+		weapons.push_back(weapon8);
+		weapons.push_back(weapon9);
+		weapons.push_back(weapon10);
+		weapons.push_back(weapon11);
+		weapons.push_back(weapon12);
+		weapons.push_back(weapon13);
+		weapons.push_back(weapon14);
+		weapons.push_back(weapon15);
+		weapons.push_back(weapon16);
+		weapons.push_back(weapon17);
+		weapons.push_back(weapon18);
+		weapons.push_back(weapon19);
+		weapons.push_back(weapon20);
+	}
+
+	void ammofunction() {
+		string ammo1 = "Laser ammo";
+		string ammo2 = "Demerits";
+		string ammo3 = "5.56mm rounds";
+		string ammo4 = "Nuclear Fusion Cores";
+		string ammo5 = "Laser cores";
+		string ammo6 = "Hydrogen Fuel";
+		string ammo7 = ".50 Caliber Rounds";
+		string ammo8 = ".24 Caliber Rounds";
+		string ammo9 = "Knife Sharpening tools";
+		string ammo10 = "Battle Mace Spikes";
+	}
+}
+
 using namespace roomitems;
 void suboptiongamed1() {
 	vector<string>playerinv;
@@ -62,11 +152,22 @@ void suboptiongamed1() {
 	cout << "---------------------------------------------" << endl;
 	cout << "Type 0 for item 1, 1 for item 2, and so on when selecting items in this case." << endl;
 
+
 	int item1, item2, item3;
 	cout << "Type the first item index you would like." << endl;
 	cin >> item1;
-	playerinv.push_back(roomitem[item1]);
-	cout << playerinv[0] << endl;
+	playerinv.push_back(roomitem[item1 - 1]);
+	cout << "Now type the second item index you would like." << endl;
+	cin >> item2;
+	playerinv.push_back(roomitem[item2 - 1]);
+	cout << "Now type the final item index you would like, and be quick about it you piece of shit." << endl;
+	cin >> item3;
+	cout << '\n' << endl;
+	cout << "Now, you must craft these items into a standard 1 megaton bomb to blow up your vehicle of choice." << endl;
+	cout << "-------------------------------------------------------------------------------------------------" << endl;
+	cout << "To Craft any item, you will need to type a letter combination in order to craft the item needed." << endl;
+	cout << "This list can be shown via pressing i, which will bring up the item list for crafting." << endl;
+
 }
 
 void suboptiongamed2() {
