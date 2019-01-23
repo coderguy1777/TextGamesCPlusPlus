@@ -119,10 +119,22 @@ namespace craftinglist {
 		string ammo8 = ".24 Caliber Rounds";
 		string ammo9 = "Knife Sharpening tools";
 		string ammo10 = "Battle Mace Spikes";
+
+		ammo.push_back(ammo1);
+		ammo.push_back(ammo2);
+		ammo.push_back(ammo3);
+		ammo.push_back(ammo4);
+		ammo.push_back(ammo5);
+		ammo.push_back(ammo6);
+		ammo.push_back(ammo7);
+		ammo.push_back(ammo8);
+		ammo.push_back(ammo9);
+		ammo.push_back(ammo10);
 	}
 }
 
 using namespace roomitems;
+using namespace craftinglist;
 void suboptiongamed1() {
 	vector<string>playerinv;
 	cout << "You need to the blow the vehicle as quickly as possible, there are items all around, would you like to scan for these items, if yes, type yes, if no, type no." << endl;
@@ -167,7 +179,79 @@ void suboptiongamed1() {
 	cout << "-------------------------------------------------------------------------------------------------" << endl;
 	cout << "To Craft any item, you will need to type a letter combination in order to craft the item needed." << endl;
 	cout << "This list can be shown via pressing i, which will bring up the item list for crafting." << endl;
+	cout << '\n' << endl;
+	cout << "To make sure you know this keybind, press i" << endl;
 
+	char ikey = _getch();
+
+	if (ikey == 'i') {
+		for (unsigned int iz = 0; iz < craftinglist::craftrecipies.size(); iz++) {
+			cout << "Crafting recipies: " << craftinglist::craftrecipies[iz] << endl;
+		}
+		cout << '\n' << endl;
+		for (unsigned int iy = 0; iy < craftinglist::food.size(); iy++) {
+			cout << "Food available: " << craftinglist::food[iy] << endl;
+		}
+		cout << '\n' << endl;
+		for (unsigned int ix = 0; ix < craftinglist::weapons.size(); ix++) {
+			cout << "Weapons avaliable: " << craftinglist::weapons[ix] << endl;
+		}
+		cout << '\n' << endl;
+		for (unsigned int yu = 0; yu < craftinglist::ammo.size(); yu++) {
+			cout << "Ammo available: " << craftinglist::ammo[yu] << endl;
+		}
+	}
+	cout << "------------------------------------------" << endl;
+	cout << "Now that is done, to select an item in either list to craft, Press 1 for the Crafting recipies." << endl;
+	cout << '\n' << endl;
+	cout << "2 for the food recipies," << endl;
+	cout << '\n' << endl;
+	cout << "3 for the weapons recipies," << endl;
+	cout << '\n' << endl;
+	cout << "And lastly, 4 for Ammo recipies." << endl;
+	cout << "To try it now, try either of the options just presented." << endl;
+
+	int option1 = 1;
+	int option2 = 2;
+	int option3 = 3;
+	int option4 = 4;
+	int optionselection;
+	cin >> optionselection;
+
+	if (optionselection == option1) {
+		cout << "You have selected Crafting Recipies!" << endl;
+	}
+	if (optionselection == option2) {
+		cout << "You have selected the Food Recipies!" << endl;
+		cout << '\n' << endl;
+		for (unsigned int x = 0; x < craftinglist::food.size(); x++) {
+			cout << "Food Recipies: " << x << craftinglist::food[x] << endl;
+		}
+	}
+	if (optionselection == option3) {
+		cout << "You have selected the Weapon Recipies!" << endl;
+		cout << '\n' << endl;
+		for (unsigned int y = 0; y < craftinglist::weapons.size(); y++) {
+			cout << "Weapon Recipies: " << y << craftinglist::weapons[y] << endl;
+		}
+		cout << "Now to select a seperate item in the list, type the item value in the Weapons Recipie to view more about it!" << endl;
+		int itemval;
+		int selectionval;
+		cin >> selectionval;
+		cout << "You selected the Weapon recipe: " << craftinglist::weapons[selectionval - 1] << endl;
+	}
+	if (optionselection == option4) {
+		cout << "You have selected the Ammo Recipies!" << endl;
+		cout << '\n' << endl;
+		for (unsigned int i = 0; i < craftinglist::ammo.size(); i++) {
+			cout << "Ammo Recipe " << i << " " << craftinglist::ammo[i] << endl;
+		}
+		cout << "To select in item in the Ammo list, type the number of the item that you would like to see the recipe for." << endl;
+		int itemid;
+		int selectionid;
+		cin >> selectionid;
+		cout << "You selected the Ammo Recipe: " << craftinglist::ammo[selectionid - 1] << endl;
+	}
 }
 
 void suboptiongamed2() {
